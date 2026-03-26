@@ -1,0 +1,96 @@
+Architecture Diagram (Text Form)
+
+[.env]
+  - SCRAPERAPI_KEY (required)
+  - GROQ_API_KEY (optional)
+
+        |
+        v
+[scraper.py] ---- Amazon India + ScraperAPI ----
+  Input:
+    - Brand list (5 brands):
+      Safari, Skybags, American Tourister, VIP, Nasher Miles
+    - Search URL pattern:
+      https://www.amazon.in/s?k={brand}+luggage
+    - Review URL pattern:
+      https://www.amazon.in/dp/{asin}#customerReviews
+  Process:
+    - Fetch brand search pages (render=false)
+    - Parse products via:
+      soup.find_all('div', {'data-asin': True})
+    - Extract product fields:
+      title, price, mrp, discount_pct, rating, review_count, product_url, asin, brand
+    - For each ASIN, fetch reviews page with render=true
+    - Parse reviews via:
+      soup.select('[data-hook="review"]')
+    - Extract review fields:
+      review_text, star_rating, date, verified_purchase, brand, product_title
+    - Enforce 2-second delay between requests
+    - Skip/log failures and continue
+  Output:
+    - data/raw/{brand}_products.json
+    - data/raw/{brand}_reviews.json
+
+        |
+        v
+[analyzer.py] ---- Data Normalization + NLP Enrichment ----
+  Input:
+    - data/raw/*_products.json
+    - data/raw/*_reviews.json
+  Process:
+    - Normalize to products.csv schema:
+      brand, title, price, mrp, discount_pct, rating, review_count, product_url, asin
+    - Normalize to reviews.csv schema:
+      brand, product_title, review_text, star_rating, date, verified_purchase
+    - Run VADER on review_text -> sentiment_score
+    - Aspect tagging per review (keyword-based):
+      wheels, handle, material, zipper, size, durability
+      labels: positive, negative, neutral, not_mentioned
+    - Build brand summary with:
+      avg_price, avg_discount_pct, avg_rating, total_reviews, sentiment_score,
+      top_5_positive_themes, top_5_negative_themes,
+      recurring_praise, recurring_complaints,
+      wheels_score, handle_score, material_score, zipper_score, size_score, durability_score,
+      anomaly_flag
+  Output:
+    - data/processed/products.csv
+    - data/processed/reviews.csv
+    - data/processed/brand_summary.csv
+
+        |
+        v
+[app.py] ---- Streamlit Dashboard + Agent Layer ----
+  Input:
+    - data/processed/products.csv
+    - data/processed/reviews.csv
+    - data/processed/brand_summary.csv
+  Process:
+    - Load and cache CSVs
+    - Print/show column verification
+    - Apply global sidebar filters:
+      brand, price range, minimum rating, sentiment range
+    - Render pages:
+      1) Overview
+      2) Brand Comparison
+      3) Product Drilldown
+      4) Agent Insights
+    - Agent Insights chatbot:
+      - Build RAG documents from filtered data
+      - Retrieve relevant context
+      - If GROQ_API_KEY exists: Groq LLM + RAG
+      - Else: rule-based RAG fallback
+      - Maintain multi-turn memory with session state
+  Output:
+    - Interactive dashboard, charts, insights, and chatbot answers
+
+Execution Order
+
+1) python scraper.py
+2) python analyzer.py
+3) streamlit run app.py
+
+Current Output Size (latest run)
+
+- products.csv: 50 rows
+- reviews.csv: 248 rows
+- brand_summary.csv: 5 rows

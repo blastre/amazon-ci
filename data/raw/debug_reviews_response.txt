@@ -1,0 +1,33 @@
+ASIN: B098BGSJX1
+
+Final URL after redirects (response.url):
+http://api.scraperapi.com/?api_key=***&url=https%3A%2F%2Fwww.amazon.in%2Fproduct-reviews%2FB098BGSJX1%2Fref%3Dcm_cr_arp_d_viewopt_rvwer%3FreviewerType%3Dall_reviews&country_code=in
+
+HTTP status: 200
+
+First 2000 characters of raw HTML:
+<!doctype html><html lang="en-in" class="a-no-js" data-19ax5a9jf="dingo"><!-- sp:feature:head-start -->
+<head><script>var aPageStart = (new Date()).getTime();</script><meta charset="utf-8"/>
+<!-- sp:end-feature:head-start -->
+<!-- sp:feature:csm:head-open-part1 -->
+
+<script type='text/javascript'>var ue_t0=ue_t0||+new Date();</script>
+<!-- sp:end-feature:csm:head-open-part1 -->
+<!-- sp:feature:cs-optimization -->
+<meta http-equiv='x-dns-prefetch-control' content='on'>
+<link rel="preconnect" href="https://images-eu.ssl-images-amazon.com" crossorigin>
+<link rel="preconnect" href="https://m.media-amazon.com" crossorigin>
+<!-- sp:end-feature:cs-optimization -->
+<!-- sp:feature:csm:head-open-part2 -->
+<script type='text/javascript'>
+window.ue_ihb = (window.ue_ihb || window.ueinit || 0) + 1;
+if (window.ue_ihb === 1) {
+
+var ue_csm = window,
+    ue_hob = +new Date();
+(function(d){var e=d.ue=d.ue||{},f=Date.now||function(){return+new Date};e.d=function(b){return f()-(b?0:d.ue_t0)};e.stub=function(b,a){if(!b[a]){var c=[];b[a]=function(){c.push([c.slice.call(arguments),e.d(),d.ue_id])};b[a].replay=function(b){for(var a;a=c.shift();)b(a[0],a[1],a[2])};b[a].isStub=1}};e.exec=function(b,a){return function(){try{return b.apply(this,arguments)}catch(c){ueLogError(c,{attribution:a||"undefined",logLevel:"WARN"})}}}})(ue_csm);
+
+
+    var ue_err_chan = 'jserr-rw';
+(function(d,e){function h(f,b){if(!(a.ec>a.mxe)&&f){a.ter.push(f);b=b||{};var c=f.logLevel||b.logLevel;c&&c!==k&&c!==m&&c!==n&&c!==p||a.ec++;c&&c!=k||a.ecf++;b.pageURL=""+(e.location?e.location.href:"");b.logLevel=c;b.attribution=f.attribution||b.attribution;a.erl.push({ex:f,info:b})}}function l(a,b,c,e,g){d.ueLogError({m:a,f:b,l:c,c:""+e,err:g,fromOnError:1,args:arguments},g?{attribution:g.attribution,logLevel:g.logLevel}:void 0);return!1}var k="FATAL",m="ERROR",n="WARN",p="DOWNGRADED",a={ec:0,ecf:0,
+pec:0,ts:0,erl:[],ter:[],buffer:[],mxe:50,startTimer:function(){a.ts++;setInterval(function(){d.ue&&a.pec<a.ec&&d.uex("at");a.p
