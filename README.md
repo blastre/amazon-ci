@@ -33,7 +33,7 @@ streamlit run app.py
 ---
 
 ## What This Project Does
-
+<img width="737" height="650" alt="Screenshot from 2026-03-26 10-15-45" src="https://github.com/user-attachments/assets/4692c8f6-6944-4660-a7d2-8fa799d54287" />
 ### 1) Data Collection (`scraper.py`)
 - Scrapes **5 brands**:
   - Safari
@@ -312,8 +312,13 @@ Based on recent run in this workspace:
 
 ---
 
-## Future Improvements (Optional)
+## Screenshots
+<img width="1920" height="944" alt="Screenshot from 2026-03-26 10-16-14" src="https://github.com/user-attachments/assets/82fd343f-7dcc-4711-af0b-d1a6f3f7044a" />
+<img width="1920" height="944" alt="Screenshot from 2026-03-26 10-16-31" src="https://github.com/user-attachments/assets/4786dcda-59ff-4042-a9c7-2b76ee279cac" />
+<img width="1920" height="944" alt="Screenshot from 2026-03-26 10-16-51" src="https://github.com/user-attachments/assets/726bccb7-ea84-458a-bf8b-24c880cb4085" />
+<img width="1920" height="944" alt="Screenshot from 2026-03-26 10-16-40" src="https://github.com/user-attachments/assets/706a578e-728a-4b5c-9215-90d2575d96a6" />
 
+## Future Improvements
 - Better retrieval scoring (TF-IDF / BM25) for chatbot context.
 - Time-series tracking across repeated scrapes.
 - Model-based topic extraction (beyond keyword themes).
