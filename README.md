@@ -34,6 +34,7 @@ streamlit run app.py
 
 ## What This Project Does
 <img width="737" height="650" alt="Screenshot from 2026-03-26 10-15-45" src="https://github.com/user-attachments/assets/4692c8f6-6944-4660-a7d2-8fa799d54287" />
+
 ### 1) Data Collection (`scraper.py`)
 - Scrapes **5 brands**:
   - Safari
